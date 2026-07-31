@@ -1,5 +1,6 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+// const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
+import { API_BASE } from "../../config/apiBase";
 export async function fetchFolderData(token, prefix = "./") {
   const resp = await fetch(
     `${API_BASE}/dmsapi/list?prefix=${encodeURIComponent(prefix)}`,
