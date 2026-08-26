@@ -9,15 +9,16 @@ const DocumentTable = ({ documents, onRemove }) => {
       </h3>
 
       {documents.length === 0 ? (
-        <div className="text-center py-8 text-gray-500 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+        <div className="text-center py-8 text-gray-500 bg-gray-50 rounded-lg border-2 border-dashed border-gray-700">
           <Upload className="w-8 h-8 mx-auto mb-2 text-gray-400" />
           <p>No documents queued for upload</p>
         </div>
       ) : (
         <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-50">
+          <div className="bg-app-surface border border-app-border rounded-2xl overflow-hidden flex flex-col h-auto sm:min-h-[150px] md:min-h-[170px]">
+            <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[58rem] border-collapse">
+              <thead className="app-table-header">
                 <tr>
                   <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     #
@@ -42,7 +43,8 @@ const DocumentTable = ({ documents, onRemove }) => {
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-200">
+
+              <tbody className="text-app-soft">
                 {documents.map((doc, index) => (
                   <tr
                     key={index}
@@ -84,6 +86,7 @@ const DocumentTable = ({ documents, onRemove }) => {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       )}

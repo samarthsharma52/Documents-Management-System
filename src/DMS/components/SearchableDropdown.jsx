@@ -49,7 +49,7 @@ export default function SearchableDropdown({ options, placeholder, onSelect }) {
             setIsOpen(true);
           }}
           onFocus={() => setIsOpen(true)}
-          className="w-full border border-gray-300 px-4 py-2 pr-10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-black cursor-pointer"
+          className="app-input w-full min-w-0 text-sm pr-10"
         />
         {searchTerm && (
           <button
@@ -61,12 +61,12 @@ export default function SearchableDropdown({ options, placeholder, onSelect }) {
         )}
       </div>
       {isOpen && (
-        <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded max-h-60 overflow-y-auto shadow">
+        <ul className="absolute z-50 w-full mt-1 bg-app-surface border border-app-border rounded-md shadow-lg max-h-60 overflow-y-auto scrollbar-hide">
           {filteredOptions.length > 0 ? (
             filteredOptions.map((item) => (
               <li
                 key={item.id}
-                className="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+                className="px-4 py-2 hover:bg-blue-700 cursor-pointer"
                 onClick={() => handleSelect(item)}
               >
                 {item.name || item.doctype || item.doc_name}

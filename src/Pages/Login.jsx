@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { MAIN_API_BASE } from '../config/apiBase';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../index.css';
+import { useAuth } from '../AuthContext';
 
 
 
@@ -29,6 +30,7 @@ const Login = () => {
   const [isEmailVerified, setIsEmailVerified] = useState(false);
   const [isEmailAutoPrefilled, setIsEmailAutoPrefilled] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   // Check if email was verified after password reset
   useEffect(() => {
@@ -86,8 +88,7 @@ const Login = () => {
 
       const { token, userId } = response.data;
       if (token && userId) {
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('userId', userId);
+        login(token, userId);
         
         setSuccess('Login successful!');
         setError('');
@@ -116,16 +117,16 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[#0f172a] overflow-hidden relative">
+    <div className="min-h-screen w-full flex items-center justify-center bg-app-bg overflow-hidden relative px-4 sm:px-6 md:px-8 py-8">
       {/* Animated Background Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-500/20 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]" />
+      <div className="absolute top-[-10%] left-[-10%] w-64 h-64 md:w-96 md:h-96 bg-indigo-500/20 rounded-full blur-[80px] md:blur-[120px] animate-pulse" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-64 h-64 md:w-96 md:h-96 bg-emerald-500/10 rounded-full blur-[80px] md:blur-[120px]" />
 
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 w-full max-w-[1100px] h-[650px] flex rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-slate-900/50 backdrop-blur-md"
+        className="relative z-10 w-full max-w-[1100px] h-auto min-h-[500px] lg:h-[650px] flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-app-surface/50 backdrop-blur-md"
       >
         {/* Left Side: Animated Branding/Illustration */}
         <div className="hidden lg:flex w-1/2 bg-gradient-to-br from-indigo-600 to-violet-700 p-12 flex-col justify-between relative overflow-hidden">
@@ -150,17 +151,17 @@ const Login = () => {
           </motion.div>
 
           {/* Decorative Circle */}
-          
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-white/10 rounded-full" />
+        
         </div>
 
         {/* Right Side: Login Form */}
-        <div className="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-slate-900">
+        <div className="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-app-surface">
           <div className="mb-10 text-center lg:text-left">
             <h2 className="text-3xl font-bold text-white">
               {isPasswordResetFlow ? (isEmailVerified ? 'New Password' : 'Verify Email') : 'Welcome Back'}
             </h2>
-            <p className="text-slate-400 mt-2">
+            <p className="text-app-muted mt-2">
                {isPasswordResetFlow ? 'Please follow the steps to reset access.' : 'Please enter your details to sign in.'}
             </p>
           </div>
@@ -178,8 +179,8 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isEmailVerified || isEmailAutoPrefilled}
-                  className={`w-full bg-slate-800/50 border border-slate-700 text-white py-3.5 pl-11 pr-4 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all ${
-                    (isEmailVerified || isEmailAutoPrefilled) ? 'opacity-60 cursor-not-allowed' : 'hover:bg-slate-800'
+                  className={`w-full bg-slate-800/50 border border-app-border text-white py-3.5 pl-11 pr-4 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all ${
+                    (isEmailVerified || isEmailAutoPrefilled) ? 'opacity-60 cursor-not-allowed' : 'hover:bg-slate-900/50'
                   }`}
                   placeholder="name@company.com"
                 />
@@ -204,7 +205,7 @@ const Login = () => {
                       type={showPassword ? 'text' : 'password'}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full bg-slate-800/50 border border-slate-700 text-white py-3.5 pl-11 pr-12 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
+                      className="w-full bg-slate-800/50 border border-app-border text-white py-3.5 pl-11 pr-12 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
                       placeholder="••••••••"
                     />
                     <button
@@ -235,7 +236,7 @@ const Login = () => {
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-4 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-all"
+              className="w-full bg-app-primary hover:bg-app-primaryHover text-white font-semibold py-4 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transition-all"
             >
               {isEmailVerified ? 'Sign In' : 'Verify Email'}
               <FaArrowRight className="text-sm" />

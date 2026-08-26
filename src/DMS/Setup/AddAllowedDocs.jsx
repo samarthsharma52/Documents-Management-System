@@ -67,12 +67,7 @@ const AddAllowedDocs = () => {
 
   return (
     <>
-      <div className="bg-white p-6 rounded-md border border-gray-300 mb-6">
-        <div className="flex">
-          <h2 className="text-lg font-bold mb-4 text-blue-800">
-            Add Allowed Document
-          </h2>
-        </div>
+      <div className="bg-app-surface p-6 rounded-md border border-gray-700 mb-6">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -88,7 +83,7 @@ const AddAllowedDocs = () => {
               value={formData.documentName}
               onChange={handleChange}
               placeholder="Enter document name"
-              className="flex-1 min-w-[200px] bg-[#f6f6f6] rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -100,14 +95,14 @@ const AddAllowedDocs = () => {
               value={formData.description}
               onChange={handleChange}
               placeholder="Enter description"
-              className="flex-1 min-w-[200px] bg-[#f6f6f6] rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="name">
+          <div className="name w-full">
             <button
               type="submit"
-              className="bg-blue-700 hover:bg-blue-600 text-white px-6 py-3 w-96 rounded-md text-sm"
+              className="bg-blue-700 hover:bg-blue-600 text-white px-6 py-3 w-full rounded-md text-sm transition-colors"
             >
               Submit
             </button>
@@ -163,10 +158,10 @@ const AddAllowedDocs = () => {
           placeholder="Search documents..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="border border-gray-300 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <div className="table w-full h-full">
+      <div className="w-full min-w-0 max-w-full overflow-hidden">
         <AllowedTable docs={filteredDocuments} handleDelete={handleDelete} />
         {success !== null && (
           <MessageModal

@@ -207,7 +207,7 @@ const DocumentDetailsModal = ({ isOpen, onClose, document, onUpdate }) => {
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
                   placeholder={`Enter reason for ${actionType.toLowerCase()}...`}
-                  className="w-full h-32 px-4 py-3 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full h-32 px-4 py-3 border border-gray-700 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                 />
               </div>
             </div>

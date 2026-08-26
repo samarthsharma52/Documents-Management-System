@@ -10,10 +10,11 @@ const UsersTable = ({ users, onUserClick }) => {
   );
 
   return (
-    <div className="flex flex-col h-[675px] bg-white rounded-md">
-      <div className="overflow-auto flex-grow">
-        <table className="min-w-full text-sm">
-          <thead className="text-black font-medium border-b border-black">
+    <div className="bg-app-surface border border-app-border rounded-2xl overflow-hidden flex flex-col h-auto sm:min-h-[150px] md:min-h-[170px]">
+      
+        <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-[48rem] border-collapse">
+          <thead className="app-table-header">
             <tr className="h-16">
               <th className="px-4 py-4 text-left">S. No.</th>
               <th className="px-4 py-4 text-left">Name</th>
@@ -24,13 +25,13 @@ const UsersTable = ({ users, onUserClick }) => {
             </tr>
           </thead>
           <tbody>
-            <tr className="h-3"></tr>
+            
             {paginatedUsers.length > 0 ? (
               paginatedUsers.map((user, index) => (
                 <tr
                   key={user.user_id}
                   onClick={() => onUserClick(user.user_id)}
-                  className="hover:bg-gray-50 transition border-b odd:bg-white even:bg-blue-100 h-14 cursor-pointer"
+                  className="app-table-row cursor-pointer"
                 >
                   <td className="px-4 py-3">
                     {(currentPage - 1) * rowsPerPage + index + 1}.
@@ -72,9 +73,10 @@ const UsersTable = ({ users, onUserClick }) => {
             )}
           </tbody>
         </table>
-      </div>
+        </div>
+      
 
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 flex justify-center items-center gap-2 select-none py-2">
+      <div className="sticky bottom-0  bg-app-surface border-t border-app-border flex justify-center items-center gap-2 select-none py-2">
         <button
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}

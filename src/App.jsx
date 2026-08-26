@@ -3,6 +3,7 @@ import reactLogo from './assests/react.svg'
 import viteLogo from './assests/vite.svg'
 import heroImg from './assests/hero.png'
 import './App.css'
+import './index.css'
 import DMSRouter from './DMS/DMSRouter'
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import Login from  './Pages/Login'

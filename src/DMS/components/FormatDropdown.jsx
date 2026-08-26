@@ -55,7 +55,7 @@ export default function FormatDropdown({ formats, onChange }) {
         type="button"
         placeholder="select file format"
         onClick={toggleDropdown}
-        className="w-full flex justify-between items-center px-4 py-2 text-left bg-white border border-gray-300 rounded focus:outline-none"
+        className="w-full flex justify-between items-center px-4 py-2 text-left bg-white border border-gray-700 rounded focus:outline-none"
       >
         <span className="truncate">
           {selectedFormats.length > 0
@@ -82,7 +82,7 @@ export default function FormatDropdown({ formats, onChange }) {
             <div className="relative">
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md pr-8"
+                className="w-full px-3 py-2 border border-gray-700 rounded-md pr-8"
                 placeholder="Search formats..."
                 value={searchTerm}
                 onChange={handleSearchChange}
@@ -126,7 +126,7 @@ export default function FormatDropdown({ formats, onChange }) {
                   type="checkbox"
                   checked={selectedFormats.includes(f.extension)}
                   readOnly
-                  className="h-4 w-4 text-blue-600 border-gray-300 rounded"
+                  className="h-4 w-4 text-blue-600 border-gray-700 rounded"
                 />
                 <label className="ml-3 text-sm text-gray-700 cursor-pointer">
                   <strong>.{f.extension}</strong> - {f.name}

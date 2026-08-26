@@ -78,13 +78,21 @@ const DmsSetup = () => {
   }, []);
 
   return (
-    <div className="flex ">
-      <div className=" w-full">
-        <div className=" flex space-x-4">
-          <div className="flex gap-2 w-[60%] rounded-full p-1 relative">
+    // <div className="flex ">
+    //   <div className=" w-full">
+    //     <div className=" flex space-x-4">
+    //       <div className="flex gap-2 w-[70%] rounded-full p-1 relative">
+
+    <div className="flex w-full">
+  <div className="w-full">
+    {/* Mobile par ek ke neeche ek (flex-col), md (tablet) aur usse bade screen par side-by-side (flex-row) */}
+    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+      
+      {/* Mobile par pura 100% width lega, aur badi screens (lg) par 70% width lega. gap-2 ke sath flex-wrap bhi lagaya hai taaki content tute nahi */}
+      <div className="flex flex-wrap sm:flex-nowrap gap-2 w-full lg:w-[70%] rounded-full p-1 relative">
             <motion.div
               layoutId="activeTab"
-              className="absolute top-1 bottom-1 left-0 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full transition-all duration-300"
+              className="absolute top-1 bottom-1 left-0 bg-gradient-to-r rounded-full transition-all "
               style={{
                 width: `calc(100% / ${tabs.length})`,
                 left: `${
@@ -103,7 +111,7 @@ const DmsSetup = () => {
               <button
                 key={tab.id}
                 className={`relative flex-1 px-4 py-2 rounded-full text-center font-medium transition-all duration-300 z-10 ${
-                  activeTab === tab.id ? "text-white" : "text-gray-700"
+                  activeTab === tab.id ? "text-white" : "text-gray-500"
                 }`}
                 onClick={() => setActiveTab(tab.id)}
               >
@@ -112,7 +120,7 @@ const DmsSetup = () => {
             ))}
           </div>
         </div>
-        <div className="mt-4">
+        <div className="app-surface min-w-0 max-w-full overflow-hidden p-4 sm:p-6">
           {activeTab === "AddService" && <AddService />}
           {activeTab === "AddDoctype" && <AddDoctype />}
           {activeTab === "AllowedDocs" && <AllowedDocs />}

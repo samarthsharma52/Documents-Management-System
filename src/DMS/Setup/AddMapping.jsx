@@ -167,9 +167,9 @@ const ServiceDocsRelation = () => {
 
   return (
     <>
-      <div className="bg-white p-6 rounded-md border border-gray-300 mb-6">
+      <div className="bg-app-surface p-6 rounded-md border border-gray-700 mb-6">
         <div className="flex">
-          <h2 className="text-lg font-bold mb-4 text-blue-800">
+          <h2 className="text-lg font-bold mb-4 text-indigo-400">
             Service-Document Relation
           </h2>
         </div>
@@ -188,10 +188,10 @@ const ServiceDocsRelation = () => {
           placeholder="Search relations..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="border border-gray-300 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <div className=" bg-white w-full h-full rounded">
+      <div className="  w-full h-full rounded">
         <RelationTable
           services={filteredServices}
           handleDelete={handleDelete}
@@ -270,7 +270,7 @@ const ServiceDocsRelation = () => {
                     defaultValue="2"
                     max="10"
                     placeholder="Allowed Size"
-                    className="border p-2 pr-12 rounded h-10 w-full placeholder:text-black border-gray-300"
+                    className="border p-2 pr-12 rounded h-10 w-full placeholder:text-black border-gray-700"
                     onChange={(e) =>
                       setFormData({
                         ...formData,
@@ -340,14 +340,14 @@ const ServiceDocsRelation = () => {
                 <div>
                   {selectedFormats.length > 0 && (
                     <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                      <label className="block text-sm font-medium text-blue-800 mb-2">
+                      <label className="block text-sm font-medium text-indigo-400 mb-2">
                         Selected Formats:
                       </label>
                       <div className="flex flex-wrap gap-2">
                         {selectedFormats.map((format, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
+                            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-indigo-400"
                           >
                             {format}
                           </span>

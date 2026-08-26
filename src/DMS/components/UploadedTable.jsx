@@ -14,29 +14,30 @@ const UploadTable = ({ docs, handleDelete }) => {
   );
 
   return (
-    <div className="flex flex-col h-[570px] bg-white rounded-md">
-      <div className="overflow-auto flex-grow">
-        <table className="min-w-full text-sm">
-          <thead className="text-black font-medium border-b border-black">
+    <div className="bg-app-surface border border-app-border rounded-2xl overflow-hidden flex flex-col h-auto sm:min-h-[150px] md:min-h-[170px]">
+      
+        <div className="w-full overflow-x-auto">
+        <table className="w-full min-w-[64rem] border-collapse">
+          <thead className="app-table-header">            
             <tr className="h-16">
-              <th className="px-4 py-4 text-left">S. No.</th>
-              <th className="px-4 py-4 text-left">Service</th>
-              <th className="px-4 py-4 text-left">Document Type</th>
-              <th className="px-4 py-4 text-left">Allowed DocType</th>
-              <th className="px-4 py-4 text-left">Upload Date</th>
-              <th className="px-4 py-4 text-left">Upload By</th>
-              <th className="px-4 py-4 text-left">File</th>
-              <th className="px-4 py-4 text-left">Visibility</th>
-              <th className="px-4 py-4 text-left">Action</th>
-            </tr>
+            <th className="px-4 py-4 text-left">S. No.</th>
+            <th className="px-4 py-4 text-left">Service</th>
+            <th className="px-4 py-4 text-left">Document Type</th>
+            <th className="px-4 py-4 text-left">Allowed DocType</th>
+            <th className="px-4 py-4 text-left">Upload Date</th>
+            <th className="px-4 py-4 text-left">Upload By</th>
+            <th className="px-4 py-4 text-left">File</th>
+            <th className="px-4 py-4 text-left">Visibility</th>
+            <th className="px-4 py-4 text-left">Action</th>
+          </tr>
           </thead>
-          <tbody>
+          <tbody className="text-app-soft">
             <tr className="h-3"></tr>
             {paginatedDocs.length > 0 ? (
               paginatedDocs.map((doc, index) => (
                 <tr
                   key={doc.document_id}
-                  className="hover:bg-gray-50 transition border-b odd:bg-white even:bg-blue-100 h-14"
+                  className="app-table-row"
                 >
                   <td className="px-4 py-3">
                     {(currentPage - 1) * rowsPerPage + index + 1}
@@ -66,9 +67,8 @@ const UploadTable = ({ docs, handleDelete }) => {
                   </td>
                   <td className="px-4 py-3">
                     <p
-                      className={`${
-                        doc.visibility ? "text-green-600" : "text-red-600"
-                      }`}
+                      className={`${doc.visibility ? "text-green-600" : "text-red-600"
+                        }`}
                     >
                       {doc.visibility ? "Public" : "Private"}
                     </p>
@@ -106,17 +106,17 @@ const UploadTable = ({ docs, handleDelete }) => {
             )}
           </tbody>
         </table>
-      </div>
+        </div>
+      
 
-      <div className="sticky bottom-0 bg-white border-t border-gray-200 flex justify-center items-center gap-2 select-none py-2">
+      <div className="sticky bottom-0  bg-app-surface border-t border-app-border flex justify-center items-center gap-2 select-none py-2">
         <button
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
           disabled={currentPage === 1}
-          className={`w-9 h-9 flex items-center justify-center rounded-md border ${
-            currentPage === 1
+          className={`w-9 h-9 flex items-center justify-center rounded-md border ${currentPage === 1
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "hover:bg-gray-200"
-          }`}
+            }`}
         >
           &#x2039;
         </button>
@@ -134,11 +134,10 @@ const UploadTable = ({ docs, handleDelete }) => {
         <button
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
           disabled={currentPage === totalPages}
-          className={`w-9 h-9 flex items-center justify-center rounded-md border ${
-            currentPage === totalPages
+          className={`w-9 h-9 flex items-center justify-center rounded-md border ${currentPage === totalPages
               ? "bg-gray-100 text-gray-400 cursor-not-allowed"
               : "hover:bg-gray-200"
-          }`}
+            }`}
         >
           &#x203A;
         </button>

@@ -80,7 +80,7 @@ const DMS = () => {
           <div className="flex gap-2 w-[40%] rounded-full p-1 relative">
             <motion.div
               layoutId="activeTab"
-              className="absolute top-1 bottom-1 left-0 bg-gradient-to-r from-blue-500 to-blue-800 rounded-full transition-all duration-300"
+              className="absolute top-1 bottom-1 left-0 bg-gradient-to-r  rounded-full transition-all "
               style={{
                 width: `calc(100% / ${tabs.length})`,
                 left: `${
@@ -108,7 +108,7 @@ const DMS = () => {
             ))}
           </div>
         </div>
-        <div className="mt-4">
+        <div className="app-surface p-6">
           {activeTab === "DocumentUpload" && <DocumentUpload />}
           {activeTab === "DocsView" && <DocsView />}
         </div>

@@ -53,11 +53,7 @@ const FolderView = () => {
   );
 
   return (
-    <div className="bg-white p-6 rounded-md border border-gray-300 h-[760px] overflow-y-auto">
-      <div className="flex">
-        <h2 className="text-lg font-bold mb-4 text-blue-800">View Documents</h2>
-      </div>
-
+    <div className="bg-app-surface p-6 rounded-md border border-gray-700 mb-6">
       <div className="max-w-8xl mx-auto p-4 font-sans">
         <div className="mb-4 flex flex-wrap space-x-2 text-blue-600 text-lg">
           <span
@@ -94,7 +90,7 @@ const FolderView = () => {
             placeholder="Search folders and files..."
             value={searchQuery}
             onChange={handleSearchChange}
-            className="w-3/12 rounded border border-gray-300 p-2 focus:outline-none focus:border-blue-500"
+            className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 

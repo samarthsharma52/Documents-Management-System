@@ -239,29 +239,29 @@ const DocumentUpload = () => {
 
   return (
     <>
-      <div className="bg-white p-6 rounded-md border border-gray-300 mb-6">
+      <div className="bg-app-surface min-w-0 p-4 sm:p-6 rounded-md border border-gray-700 mb-6">
         <div className="flex">
-          <h2 className="text-lg font-bold mb-4 text-blue-800">
+          <h2 className="text-lg font-bold mb-4 text-indigo-400">
             Document Upload
           </h2>
         </div>
         <button
-          className="bg-blue-700 hover:bg-blue-600 w-60 text-white px-6 py-3 rounded-md text-sm"
+          className="bg-blue-700 hover:bg-blue-600 w-full sm:w-60 text-white px-6 py-3 rounded-md text-sm"
           onClick={() => setIsModalOpen(true)}
         >
           + Add Document
         </button>
       </div>
-      <div className="mb-4 flex justify-start items-center gap-4">
+      <div className="mb-4 flex min-w-0 flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
         <input
           type="text"
           placeholder="Search ..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="border border-gray-300 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="app-input w-full sm:w-64 border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
-        <p>also search in: </p>
-        <div className="flex items-center gap-2 ">
+        <p className="text-sm text-app-soft sm:mr-0">also search in:</p>
+        <div className="flex items-center gap-2">
           <input
             type="checkbox"
             checked={includeDocTypeInSearch}
@@ -288,7 +288,7 @@ const DocumentUpload = () => {
             type="date"
             value={startDate}
             onChange={(e) => setStartDate(e.target.value)}
-            className="border border-gray-300 rounded-md px-2 py-1 text-sm"
+            className="border border-gray-700 rounded-md px-2 py-1 text-sm"
           />
         </div>
         <div className="flex items-center gap-2">
@@ -300,7 +300,7 @@ const DocumentUpload = () => {
             type="date"
             value={endDate}
             onChange={(e) => setEndDate(e.target.value)}
-            className="border border-gray-300 rounded-md px-2 py-1 text-sm"
+            className="border border-gray-700 rounded-md px-2 py-1 text-sm"
           />
         </div>
         <button
@@ -316,16 +316,16 @@ const DocumentUpload = () => {
           Clear Filters
         </button>
       </div>
-      <div className="rounded-md bg-white">
-        <div className="w-full">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div className="min-w-0 rounded-md">
+        <div className="w-full min-w-0">
+          <div className="w-full min-w-0">
             <UploadTable docs={filteredDocs} handleDelete={handleDelete} />
           </div>
 
           {isModalOpen && (
-            <div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-              <div className="bg-white rounded w-full max-w-4xl max-h-[90vh] overflow-y-auto border border-black">
-                <div className="sticky top-0 bg-white px-6 py-4 rounded-t-xl z-50">
+            <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-slate-950/60 p-3 backdrop-blur-sm sm:p-4">
+              <div className="w-full max-w-4xl min-w-0 max-h-[94vh] overflow-y-auto rounded border border-black bg-white">
+                <div className="sticky top-0 z-50 px-4 py-4 rounded-t-xl sm:px-6">
                   <div className="flex justify-between items-center">
                     <h2 className="text-xl font-semibold text-gray-900">
                       Add New Document
@@ -341,7 +341,7 @@ const DocumentUpload = () => {
                     </button>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="min-w-0 p-4 sm:p-6">
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
@@ -388,7 +388,7 @@ const DocumentUpload = () => {
                         />
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                       <div className="mb-6">
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                           Upload File *
@@ -396,7 +396,7 @@ const DocumentUpload = () => {
                         <div className="relative">
                           <input
                             type="file"
-                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer border border-gray-300 rounded p-2"
+                            className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 file:cursor-pointer border border-gray-700 rounded p-2"
                             onChange={handleFileChange}
                             accept={
                               selectedFormats.length > 0
@@ -410,14 +410,14 @@ const DocumentUpload = () => {
                       </div>
                       {selectedFormats.length > 0 && (
                         <div className="mb-6 p-4 bg-blue-50 rounded border border-blue-200">
-                          <label className="block text-sm font-medium text-blue-800 mb-2">
+                          <label className="block text-sm font-medium text-indigo-400 mb-2">
                             Supported Formats:
                           </label>
                           <div className="flex flex-wrap gap-2">
                             {selectedFormats.map((format, index) => (
                               <span
                                 key={index}
-                                className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-blue-200 text-blue-800"
+                                className="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-blue-200 text-indigo-400"
                               >
                                 {format}
                               </span>
@@ -426,7 +426,7 @@ const DocumentUpload = () => {
                         </div>
                       )}
                     </div>
-                    <div className="mb-6 grid grid-cols-3">
+                    <div className="mb-6 grid grid-cols-1">
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                           .../Higher/{selectedService?.name || "service name"}/
@@ -434,7 +434,7 @@ const DocumentUpload = () => {
                         </label>
                         <input
                           type="text"
-                          className="w-full border border-gray-300 px-4 py-2 pr-10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-black cursor-pointer"
+                          className="w-full border border-gray-700 px-4 py-2 pr-10 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-black cursor-pointer"
                           placeholder="Enter folder name"
                           onChange={(e) => setFolderName(e.target.value)}
                           value={folderName}
@@ -447,7 +447,7 @@ const DocumentUpload = () => {
                       onRemove={handleRemoveQueued}
                     />
 
-                    <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-200">
+                    <div className="mt-6 flex flex-col-reverse justify-end gap-3 border-t border-gray-200 pt-4 sm:flex-row">
                       <button
                         className="px-6 py-2.5 text-black hover:bg-red-500 hover:text-white rounded font-medium transition-colors"
                         onClick={() => {
@@ -471,7 +471,7 @@ const DocumentUpload = () => {
                   </form>
                   {confirm && (
                     <div className="fixed inset-0 backdrop-blur-sm flex justify-center items-center z-50">
-                      <div className="bg-white p-6 rounded-3xl w-max max-w-4xl relative flex flex-col items-center border border-black">
+                      <div className="mx-3 w-full max-w-md rounded-3xl border border-black p-5 relative flex flex-col items-center sm:p-6">
                         <svg
                           width="61"
                           height="61"
@@ -484,15 +484,15 @@ const DocumentUpload = () => {
                             fill="#005AE6"
                           />
                         </svg>
-                        <h1 className="text-4xl py-8 text-blue-700 font-bold">
+                        <h1 className="py-5 text-center text-2xl font-bold text-blue-700 sm:text-4xl">
                           Add Document?
                         </h1>
-                        <p className="text-xl text-gray-700 pb-8 text-center">
+                        <p className="pb-6 text-center text-base text-gray-700 sm:text-xl">
                           Are you sure you want to add document?
                         </p>
-                        <div className="buttons gap-4 flex justify-center pt-6 w-full">
+                        <div className="buttons flex w-full flex-col-reverse justify-center gap-3 pt-4 sm:flex-row">
                           <button
-                            className="border border-black hover:bg-red-500 hover:text-white text-black px-6 py-2 rounded-md text-lg w-1/2"
+                            className="w-full rounded-md border border-black px-6 py-2 text-lg text-black hover:bg-red-500 hover:text-white sm:w-1/2"
                             type="submit"
                             onClick={() => {
                               setConfirm(false);
@@ -501,7 +501,7 @@ const DocumentUpload = () => {
                             cancel
                           </button>
                           <button
-                            className="bg-blue-500 hover:bg-blue-700 text-white px-6 py-2 rounded-md text-lg w-1/2"
+                            className="w-full rounded-md bg-blue-500 px-6 py-2 text-lg text-white hover:bg-blue-700 sm:w-1/2"
                             onClick={handleSubmit}
                           >
                             confirm

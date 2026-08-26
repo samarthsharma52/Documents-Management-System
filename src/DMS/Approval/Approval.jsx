@@ -121,15 +121,16 @@ export default function Approval() {
   };
 
   
-
+// className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-55 focus:outline-none focus:ring-2 focus:ring-blue-500"
   return (
-    <>
-      <div className="bg-white p-6 rounded-md border border-gray-300 mb-4">
+    <div className="app-surface p-6">
+      <div className="bg-app-surface p-6 rounded-md border border-gray-700 mb-6">
         <div className="flex">
-          <h2 className="text-lg font-bold mb-4 text-blue-800">
+          <h2 className="text-lg font-bold mb-4 text-indigo-400">
             Document Approval
           </h2>
         </div>
+
         <div className="flex gap-4">
           <div>
             <SearchableDropdown
@@ -138,9 +139,10 @@ export default function Approval() {
               onSelect={({ id }) => {
                 setSelectedServiceId(id);
               }}
+             
             />
           </div>
-          <div>
+          <div >
             <SearchableDropdown
               options={usersList.map((user) => ({
                 id: user.user_id,
@@ -150,20 +152,22 @@ export default function Approval() {
               onSelect={({ id }) => {
                 setSelectedUserId(id);
               }}
+             className="w-55"
             />
           </div>
           <button
             onClick={handleFind}
             disabled={!selectedUserId}
-            className="bg-blue-700 hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-2 rounded-md text-sm"
+            className="app-button-primary disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Find
           </button>
         </div>
-      </div>
+        </div>
+      
 
       {usersList.length >= 0 && (
-        <div className=" mb-4">
+        <div className="flex mb-6">
           <div className="flex gap-4">
             <div className="">
               <input
@@ -173,7 +177,7 @@ export default function Approval() {
                 onChange={(e) =>
                   setSearchFilters({ ...searchFilters, name: e.target.value })
                 }
-                className="w-60 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-55 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div className="">
@@ -184,7 +188,7 @@ export default function Approval() {
                 onChange={(e) =>
                   setSearchFilters({ ...searchFilters, userId: e.target.value })
                 }
-                className="w-60 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-55 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div className="">
@@ -198,7 +202,7 @@ export default function Approval() {
                     docCount: e.target.value,
                   })
                 }
-                className="w-60 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-55 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div className="">
@@ -212,7 +216,7 @@ export default function Approval() {
                     appCount: e.target.value,
                   })
                 }
-                className="w-60 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-55 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div className="">
@@ -224,7 +228,7 @@ export default function Approval() {
                     applicationStatus: e.target.value,
                   })
                 }
-                className="w-60 px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="app-input border border-gray-700 rounded-md px-4 py-2 placeholder:text-gray-500 text-sm w-55 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">All Status</option>
                 <option value="Pending">Pending</option>
@@ -289,6 +293,7 @@ export default function Approval() {
         document={selectedDocument}
         onUpdate={handleRefresh}
       />
-    </>
+      
+    </div>
   );
 }

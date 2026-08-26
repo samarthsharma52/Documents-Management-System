@@ -30,9 +30,10 @@ const DocumentsTable = ({ documents, onViewDocument, loading }) => {
   }
 
   return (
-    <>
-      <table className="min-w-full text-sm">
-        <thead className="bg-gray-50 border-b">
+    <div className="bg-app-surface border border-app-border rounded-2xl overflow-hidden flex flex-col h-auto sm:min-h-[150px] md:min-h-[170px]">
+      <div className="w-full overflow-x-auto">
+      <table className="w-full min-w-[64rem] border-collapse">
+        <thead className="app-table-header">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Document ID
@@ -60,7 +61,8 @@ const DocumentsTable = ({ documents, onViewDocument, loading }) => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        
+        <tbody className="text-app-soft">
           {documents.map((doc, index) => {
             const fileName =
               doc.path?.split("/").pop() || `Document ${index + 1}`;
@@ -105,15 +107,14 @@ const DocumentsTable = ({ documents, onViewDocument, loading }) => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
-                    className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                      (doc.action || '').toUpperCase() === 'APPROVED'
+                    className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${(doc.action || '').toUpperCase() === 'APPROVED'
                         ? "bg-green-100 text-green-800"
                         : (doc.action || '').toUpperCase() === 'REJECTED'
-                        ? "bg-red-100 text-red-800"
-                        : (doc.action || '').toUpperCase() === 'RESUBMITTED'
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-blue-100 text-blue-800"
-                    }`}
+                          ? "bg-red-100 text-red-800"
+                          : (doc.action || '').toUpperCase() === 'RESUBMITTED'
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-blue-100 text-indigo-400"
+                      }`}
                   >
                     {(doc.action || 'OPEN').toUpperCase()}
                   </span>
@@ -147,6 +148,7 @@ const DocumentsTable = ({ documents, onViewDocument, loading }) => {
           })}
         </tbody>
       </table>
+      </div>
 
       {showReasonModal && selectedReason && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[70]">
@@ -168,15 +170,14 @@ const DocumentsTable = ({ documents, onViewDocument, loading }) => {
             <div className="p-6">
               <div className="mb-4">
                 <span
-                  className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                    (selectedReason.action || '').toUpperCase() === 'APPROVED'
+                  className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${(selectedReason.action || '').toUpperCase() === 'APPROVED'
                       ? "bg-green-100 text-green-800"
                       : (selectedReason.action || '').toUpperCase() === 'REJECTED'
-                      ? "bg-red-100 text-red-800"
-                      : (selectedReason.action || '').toUpperCase() === 'RESUBMITTED'
-                      ? "bg-yellow-100 text-yellow-800"
-                      : "bg-blue-100 text-blue-800"
-                  }`}
+                        ? "bg-red-100 text-red-800"
+                        : (selectedReason.action || '').toUpperCase() === 'RESUBMITTED'
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-blue-100 text-indigo-400"
+                    }`}
                 >
                   {(selectedReason.action || 'OPEN').toUpperCase()}
                 </span>
@@ -199,7 +200,7 @@ const DocumentsTable = ({ documents, onViewDocument, loading }) => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
